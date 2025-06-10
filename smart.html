@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMART BOSS COLLECTION Portfolio - [SMART BOSS]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Resets & Base Styles */
+        :root {
+            --primary-color: #333; /* Dark Grey for text/headings */
+            --secondary-color: #666; /* Lighter Grey for paragraphs */
+            --accent-color: #A0522D; /* Sienna/Brown for accents (fashionable) */
+            --light-bg: #F8F8F8;
+            --dark-bg: #222;
+            --white: #FFFFFF;
+            --border-color: #E0E0E0;
+
+            --font-heading: 'Playfair Display', serif; /* Elegant serif font */
+            --font-body: 'Open Sans', sans-serif; /* Clean sans-serif for body */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--secondary-color);
+            background-color: var(--white);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        h2.section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 15px auto 0;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .bg-light {
+            background-color: var(--light-bg);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .primary-btn {
+            background-color: var(--accent-color);
+            color: var(--white);
+        }
+
+        .primary-btn:hover {
+            background-color: #8B4513; /* Darker Sienna */
+            color: var(--white);
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+        }
+
+        .secondary-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--white);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .main-nav .nav-list {
+            display: flex;
+        }
+
+        .main-nav .nav-list li {
+            margin-left: 30px;
+        }
+
+        .main-nav .nav-list a {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.05em;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .main-nav .nav-list a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .main-nav .nav-list a:hover::after,
+        .main-nav .nav-list a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: url('https://via.placeholder.com/1920x800/EEE/333?text=Fashion+Background+Image') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 150px 0;
+            position: relative;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Overlay for readability */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h2 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: var(--white);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            height: 400px; /* Fixed height for image */
+            object-fit: cover; /* Ensures image covers the area */
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-text h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        .about-text ul {
+            margin-top: 20px;
+        }
+
+        .about-text ul li {
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .about-text ul li i {
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .service-card .icon-large {
+            font-size: 3em;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 0.95em;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 300px; /* Fixed height for consistent look */
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            text-align: center;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-overlay h3 {
+            color: var(--white);
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-overlay p {
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-overlay .btn {
+            padding: 8px 20px;
+            font-size: 0.9em;
+        }
+
+        /* Testimonials Section */
+        .testimonial-carousel {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .testimonial-card h4 {
+            font-weight: 600;
+            color: var(--accent-color);
+            font-size: 1em;
+            margin-top: 0;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px; /* Ensures it doesn't get too small */
+        }
+
+        .contact-info p {
+            margin-bottom: 25px;
+        }
+
+        .contact-info ul li {jpg
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .contact-info ul li i {
+            color: var(--accent-color);
+            margin-right: 15px;
+            width: 20px; /* Fixed width for icon alignment */
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            font-size: 2em;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-form {
+            flex: 2;
+            min-width: 400px; /* Ensures it doesn't get too small */
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-family: var(--font-body);
+            font-size: 1em;
+            color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1em;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9em;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-nav .nav-list {
+                display: none; /* Hide desktop nav */
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 80px; /* Adjust based on header height */
+                left: 0;
+                background-color: var(--white);
+                border-top: 1px solid var(--border-color);
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 20px 0;
+            }
+
+            .main-nav .nav-list.active {
+                display: flex;
+            }
+
+            .main-nav .nav-list li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-content h2 {
+                font-size: 2.8em;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-image {
+                margin-bottom: 30px;
+            }
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+
+            .contact-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-info,
+            .contact-form {
+                min-width: unset; /* Remove fixed width */
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            h2.section-title {
+                font-size: 2em;
+                margin-bottom: 40px;
+            }
+
+            .hero-content h2 {
+                font-size: 2.2em;
+            }
+
+            .hero-content p {
+                font-size: 1em;
+            }
+
+            .testimonial-card {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .logo {
+                font-size: 1.5em;
+            }
+
+            .hero-content h2 {
+                font-size: 1.8em;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="logo">[SMART BOSS]</h1>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Strategic Vision for Fashion Excellence.</h2>
+                    <p>I am a dedicated Fashion Designer Manager with a proven track record of elevating brands, streamlining production, and fostering creative talent.</p>
+                    <a href="#contact" class="btn primary-btn">Let's Collaborate</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section section-padding">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="images/manager_profile.jpg" alt="[smartboss] - Fashion Manager">
+                    </div>
+                    <div class="about-text">
+                        <h3>Passionate Leader in Fashion Management</h3>
+                        <p>With 10 years of experience in the dynamic fashion industry, I specialize in bridging the gap between creative vision and market success. My expertise spans from brand strategy and collection development to supply chain optimization and retail execution.</p>
+                        <p>I thrive on transforming innovative concepts into tangible collections, managing multifaceted projects, and building strong relationships with designers, manufacturers, and retailers. My goal is to empower fashion brands to achieve their full potential.</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Brand Strategy & Development</li>
+                            <li><i class="fas fa-check-circle"></i> Production & Supply Chain Management</li>
+                            <li><i class="fas fa-check-circle"></i> Marketing & PR Coordination</li>
+                            <li><i class="fas fa-check-circle"></i> Talent Scouting & Team Leadership</li>
+                            <li><i class="fas fa-check-circle"></i> Retail & Merchandising Consulting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services-section section-padding bg-light">
+            <div class="container">
+                <h2 class="section-title">My Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-lightbulb icon-large"></i>
+                        <h3>Brand Development & Strategy</h3>
+                        <p>Crafting compelling brand identities, market positioning, and long-term strategic roadmaps for sustainable growth.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-tshirt icon-large"></i>
+                        <h3>Collection Planning & Oversight</h3>
+                        <p>Managing the entire collection lifecycle from concept to delivery, ensuring quality, cost-efficiency, and timely execution.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-chart-line icon-large"></i>
+                        <h3>Marketing & PR Management</h3>
+                        <p>Developing and executing effective marketing campaigns, digital strategies, and public relations initiatives to maximize brand visibility.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-users icon-large"></i>
+                        <h3>Talent & Team Management</h3>
+                        <p>Identifying, nurturing, and managing creative and production teams to foster collaboration and achieve project goals.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-boxes icon-large"></i>
+                        <h3>Supply Chain Optimization</h3>
+                        <p>Streamlining sourcing, manufacturing, and logistics processes for enhanced efficiency and reduced costs.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-store icon-large"></i>
+                        <h3>Retail & E-commerce Strategy</h3>
+                        <p>Advising on retail expansion, merchandising, and e-commerce strategies to boost sales and market reach.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio-section section-padding">
+            <div class="container">
+                <h2 class="section-title">Managed Projects</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="images/project1.jpg" alt="Project 1: [SMART BOSS ] SMART BOSS Collection">
+                        <div class="portfolio-overlay">
+                            <h3>[SMART BOSS ] SMART BOSS Collection</h3>
+                            <p>Oversaw the entire production and launch of a luxury Fall/Winter collection, from initial sketches to global distribution.</p>
+                            <a href="#" class="btn secondary-btn">View Details</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="images/project2.jpg" alt="Project 2: Sustainable Fashion Initiative">
+                        <div class="portfolio-overlay">
+                            <h3>Sustainable Fashion Initiative</h3>
+                            <p>Led a groundbreaking project focused on integrating sustainable practices into the supply chain for a major ethical brand.</p>
+                            <a href="#" class="btn secondary-btn">View Details</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="images/project3.jpg" alt="Project 3: Pop-up Store Launch">
+                        <div class="portfolio-overlay">
+                            <h3>Flagship Pop-up Store Launch</h3>
+                            <p>Managed the strategic planning, design, and execution of a highly successful temporary retail space in [City Name].</p>
+                            <a href="#" class="btn secondary-btn">View Details</a>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials-section section-padding bg-light">
+            <div class="container">
+                <h2 class="section-title">What Clients Say</h2>
+                <div class="testimonial-carousel">
+                    <div class="testimonial-card">
+                        <p>"[SMART BOSS] brought unparalleled strategic insight and flawless execution to our latest collection. Their ability to manage complex logistics while maintaining creative integrity is truly exceptional."</p>
+                        <h4>- [Client Name], CEO of [Fashion Brand]</h4>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Working with [SMART BOSS] transformed our production timeline and significantly improved our market presence. A true professional who understands the nuances of the fashion business."</p>
+                        <h4>- [Another Client Name], Creative Director</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section section-padding">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <p>Ready to discuss your next fashion project? I'm eager to help you achieve your goals.</p>
+                        <ul>
+                            <li><i class="fas fa-envelope"></i> <a href="mailto:e.esmart23@gmail.com">e.esmart23@gmail.com</a></li>
+                            <li><i class="fas fa-phone"></i> <a href="tel:+2348164396867">+234 8164396867</a></li>
+                            <li><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</li>
+                        </ul>
+                        <div class="social-links">
+                            <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin fa-2x"></i></a>
+                            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram fa-2x"></i></a>
+                            <a href="#" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter fa-2x"></i></a>
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 [SMART BOSS]. All rights reserved. | SMART BOSS COLLECTION Portfolio</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile nav if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                });
+            });
+
+            // Mobile navigation toggle (Hamburger menu)
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.main-nav .nav-list');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active'); // Optional: for animating hamburger icon
+            });
+
+            // Optional: Add active class to nav link on scroll
+            const sections = document.querySelectorAll('section');
+            const navLi = document.querySelectorAll('.main-nav .nav-list li a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop - sectionHeight / 3) { // Adjust offset for better timing
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLi.forEach(a => {
+                    a.classList.remove('active');
+                    if (a.getAttribute('href').includes(current)) {
+                        a.classList.add('active');
+                    }
+                });
+            });
+
+            // Simple Form Submission (Client-side, won't send email without backend)
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault(); // Prevent default form submission
+
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+
+                    if (name && email && message) {
+                        alert('Thank you for your message, ' + name + '! I will get back to you soon.');
+                        contactForm.reset(); // Clear the form
+                        // In a real application, you would send this data to a server using fetch() or XMLHttpRequest
+                        console.log('Form data:', { name, email, message });
+                    } else {
+                        alert('Please fill in all fields.');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
